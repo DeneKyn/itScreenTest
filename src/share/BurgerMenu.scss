@@ -1,15 +1,5 @@
 .container {
   position: relative;
-
-  .icon {
-    cursor: pointer;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
   .menu_list {
     z-index: 10;
     top: 20px;
@@ -20,13 +10,10 @@
     align-items: flex-start;
     gap: 10px;
     background: white;
-
     .menu_item {
       &:hover {
         opacity: 0.6;
       }
-
-      color: #495278;
       cursor: pointer;
       display: flex;
       align-items: center;

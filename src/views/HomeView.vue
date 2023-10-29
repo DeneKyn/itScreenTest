@@ -1,48 +1,52 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
-import SwitchTable from '../components/SwitchTable/SwitchTable.vue'
-import HeaderComponent from '../components/Header/HeaderComponent.vue'
-import FooterComponent from '../components/Footer/FooterComponent.vue'
-import IconFAQ from '../components/icons/IconFAQ.vue'
+<script setup lang="ts">
+import { ref } from 'vue'
+import SwitchItem from '../components/SwitchItem/SwitchItem.vue'
+import GearIcon from '../components/icons/GearIcon.vue'
+import BucketIcon from '../components/icons/BucketIcon.vue'
+import CopyIcon from '../components/icons/CopyIcon.vue'
+import BurgerMenu from '../share/BurgerMenu.vue'
 
-export default defineComponent({
-  components: {
-    SwitchTable,
-    HeaderComponent,
-    FooterComponent,
-    IconFAQ
-  },
-  data() {
-    return {
-      title: 'Garden Light'
-    }
-  },
-  mounted() {},
-  methods: {
-    handleFAQ() {
-      alert('TODO: Add Action')
-    }
+const initItems = new Array(8).fill('').map((el, ind) => ({
+  title: `Title ${ind}`
+}))
+
+const menuItems: Array<{ icon: any; title: string; type: string }> = [
+  { icon: GearIcon, title: 'Настроить', type: 'setup' },
+  { icon: CopyIcon, title: 'Дублировать', type: 'copy' },
+  { icon: BucketIcon, title: 'Удалить', type: 'delete' }
+]
+
+const items = ref(initItems)
+
+const onMenuAction = (type: string, el: { title: string }) => {
+  console.log(type)
+  switch (type) {
+    case 'copy':
+      items.value = [...items.value, el]
+      break
+
+    case 'delete':
+      items.value = items.value.filter(({ title }) => title !== el.title)
+      break
+
+    default:
+      break
   }
-})
+}
 </script>
 
 <template>
-  <div class="ellipseBottom"></div>
-  <div class="ellipseTop"></div>
-  <div class="faq" @click="handleFAQ()">
-    <IconFAQ></IconFAQ>
-  </div>
-  <div class="layout">
-    <header>
-      <HeaderComponent :title="title"> </HeaderComponent>
-    </header>
-    <main>
-      <SwitchTable></SwitchTable>
-    </main>
-    <footer>
-      <FooterComponent></FooterComponent>
-    </footer>
-  </div>
+  <main>
+    <ul class="switch-wrapper">
+      <li v-for="(el, index) in items" :key="index">
+        <SwitchItem :id="index.toString()">
+          <div class="header">
+            <h2>{{ el.title }}</h2>
+            <BurgerMenu @menu-action="(e) => onMenuAction(e, el)" :items="menuItems" /></div
+        ></SwitchItem>
+      </li>
+    </ul>
+  </main>
 </template>
 
 <style scoped lang="scss">
@@ -88,28 +92,26 @@ export default defineComponent({
   max-height: 100vh;
   max-width: 1620px;
 
-  header {
-    line-height: 48px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    z-index: 1;
-  }
+  li {
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
 
-  main {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-height: 120px;
-    overflow: auto;
-    z-index: 1;
-  }
+      h2 {
+        color: #fff;
+        font-family: Inter;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+    }
 
-  footer {
-    text-align: center;
-    color: #fff;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    z-index: 1;
+    border-radius: 4px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 20px;
   }
 }
 </style>

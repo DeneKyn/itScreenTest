@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
+import './SwitchItem.scss'
 
-defineProps(['id', 'isActive'])
-defineEmits(['toggle'])
+defineProps(['id'])
+defineEmits(['copy'])
 </script>
 
 <template>
@@ -18,7 +19,7 @@ defineEmits(['toggle'])
                 <div class="switch-indicator-wrap">
                   <div class="switch-indicator"></div>
                 </div>
-                <span class="switch-indicator-label"> ВКЛ </span>
+                <span class="switch-indicator-label"> ВКЛ {{ id }}</span>
               </div>
 
               <div class="switch-indicator-block indicator-off">
@@ -34,7 +35,3 @@ defineEmits(['toggle'])
     </label>
   </div>
 </template>
-
-<style lang="scss" scoped>
-@import url('./SwitchItem.scss');
-</style>
