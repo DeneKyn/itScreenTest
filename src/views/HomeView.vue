@@ -34,6 +34,7 @@ const onMenuAction = (type: string, el: { title: string }) => {
   }
 }
 </script>
+<template>
   <main>
     <ul class="switch-wrapper">
       <li v-for="(el, index) in items" :key="index">
@@ -58,7 +59,6 @@ const onMenuAction = (type: string, el: { title: string }) => {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url('@/assets/ellipseBottom.png');
-  ;
 }
 
 .ellipseTop {
@@ -71,7 +71,6 @@ const onMenuAction = (type: string, el: { title: string }) => {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url('@/assets/ellipseTop.png');
-  ;
 }
 
 .faq {
