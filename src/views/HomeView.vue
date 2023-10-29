@@ -1,27 +1,50 @@
 <script setup lang="ts">
-import SwitchTable from '../components/SwitchTable.vue'
-import HeaderComponent from '../components/HeaderComponent.vue'
-import FooterComponent from '../components/FooterComponent.vue'
-import IconFAQ from '../components/icons/IconFAQ.vue'
+import { ref } from 'vue'
+import SwitchItem from '../components/SwitchItem/SwitchItem.vue'
+import GearIcon from '../components/icons/GearIcon.vue'
+import BucketIcon from '../components/icons/BucketIcon.vue'
+import CopyIcon from '../components/icons/CopyIcon.vue'
+import BurgerMenu from '../share/BurgerMenu.vue'
 
+const initItems = new Array(8).fill('').map((el, ind) => ({
+  title: `Title ${ind}`
+}))
+
+const menuItems: Array<{ icon: any; title: string; type: string }> = [
+  { icon: GearIcon, title: 'Настроить', type: 'setup' },
+  { icon: CopyIcon, title: 'Дублировать', type: 'copy' },
+  { icon: BucketIcon, title: 'Удалить', type: 'delete' }
+]
+
+const items = ref(initItems)
+
+const onMenuAction = (type: string, el: { title: string }) => {
+  console.log(type)
+  switch (type) {
+    case 'copy':
+      items.value = [...items.value, el]
+      break
+
+    case 'delete':
+      items.value = items.value.filter(({ title }) => title !== el.title)
+      break
+
+    default:
+      break
+  }
+}
 </script>
-<template>
-  <div class="ellipseBottom"></div>
-  <div class="ellipseTop"></div>
-  <div class="faq">
-    <IconFAQ></IconFAQ>
-  </div>
-  <div class="layout">
-    <header>
-      <HeaderComponent :title="'Garden Light'"> </HeaderComponent>
-    </header>
-    <main>
-      <SwitchTable></SwitchTable>
-    </main>
-    <footer>
-      <FooterComponent></FooterComponent>
-    </footer>
-  </div>
+  <main>
+    <ul class="switch-wrapper">
+      <li v-for="(el, index) in items" :key="index">
+        <SwitchItem :id="index.toString()">
+          <div class="header">
+            <h2>{{ el.title }}</h2>
+            <BurgerMenu @menu-action="(e) => onMenuAction(e, el)" :items="menuItems" /></div
+        ></SwitchItem>
+      </li>
+    </ul>
+  </main>
 </template>
 
 <style scoped lang="scss">
@@ -61,33 +84,32 @@ import IconFAQ from '../components/icons/IconFAQ.vue'
 
 .layout {
   display: flex;
-  flex: auto;
-  flex-direction: column;
-  height: 100%;
-  margin: 0 50px;
-  max-height: 100vh;
-  max-width: 1620px;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 30px;
+  flex-wrap: wrap;
 
-  header {
-    line-height: 48px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
+  li {
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
 
-  main {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-height: 120px;
-    line-height: 120px;
-    overflow: auto;
-  }
+      h2 {
+        color: #fff;
+        font-family: Inter;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+    }
 
-  footer {
-    text-align: center;
-    color: #fff;
-    margin-top: 5px;
-    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 20px;
   }
 }
 </style>
