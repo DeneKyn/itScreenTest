@@ -1,19 +1,41 @@
-<script setup lang="ts">
-import SwitchTable from '../components/SwitchTable.vue'
-import HeaderComponent from '../components/HeaderComponent.vue'
-import FooterComponent from '../components/FooterComponent.vue'
+<script lang="ts">
+import { defineComponent } from 'vue';
+import SwitchTable from '../components/SwitchTable/SwitchTable.vue'
+import HeaderComponent from '../components/Header/HeaderComponent.vue'
+import FooterComponent from '../components/Footer/FooterComponent.vue'
 import IconFAQ from '../components/icons/IconFAQ.vue'
 
+export default defineComponent({
+  components: {
+    SwitchTable,
+    HeaderComponent,
+    FooterComponent,
+    IconFAQ
+  },
+  data() {
+    return {
+      title: 'Garden Light'
+    }
+  },
+  mounted() {
+  },
+  methods: {
+    handleFAQ() {
+      alert("TODO: Add Action");
+    }
+  }
+})
 </script>
+
 <template>
   <div class="ellipseBottom"></div>
   <div class="ellipseTop"></div>
-  <div class="faq">
+  <div class="faq" @click="handleFAQ()">
     <IconFAQ></IconFAQ>
   </div>
   <div class="layout">
     <header>
-      <HeaderComponent :title="'Garden Light'"> </HeaderComponent>
+      <HeaderComponent :title="title"> </HeaderComponent>
     </header>
     <main>
       <SwitchTable></SwitchTable>
@@ -31,6 +53,7 @@ import IconFAQ from '../components/icons/IconFAQ.vue'
   width: 40%;
   bottom: 0;
   left: 0;
+  z-index: -1;
 
   background-repeat: no-repeat;
   background-size: cover;
@@ -44,6 +67,7 @@ import IconFAQ from '../components/icons/IconFAQ.vue'
   height: 55%;
   top: 0;
   right: 0;
+  z-index: -1;
 
   background-repeat: no-repeat;
   background-size: cover;
@@ -52,6 +76,7 @@ import IconFAQ from '../components/icons/IconFAQ.vue'
 }
 
 .faq {
+  cursor: pointer;
   position: absolute;
   bottom: 10px;
   right: 10px;
@@ -79,7 +104,6 @@ import IconFAQ from '../components/icons/IconFAQ.vue'
     flex-direction: column;
     flex: 1;
     min-height: 120px;
-    line-height: 120px;
     overflow: auto;
   }
 
