@@ -34,7 +34,10 @@ const onMenuAction = (type: string, el: { title: string }) => {
   }
 }
 </script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 180d6c9 (fix)
 <template>
   <main>
     <ul class="switch-wrapper">
