@@ -1,7 +1,8 @@
 @import './base.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 #app {
-  background: #0C0B0A;;
+  background-image: url('~@/assets/background.svg');
   font-weight: normal;
 }
 
@@ -14,8 +15,28 @@
 @media (min-width: 1024px) {
   body {
     display: flex;
+    justify-content: center;
   }
 
   #app {
   }
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #EEE;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #FFDD5C;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

@@ -1,60 +1,93 @@
 <script setup lang="ts">
-import SwitchItem from '../components/SwitchItem.vue'
-import IconMenu from '../components/icons/IconMenu.vue'
+import SwitchTable from '../components/SwitchTable.vue'
+import HeaderComponent from '../components/HeaderComponent.vue'
+import FooterComponent from '../components/FooterComponent.vue'
+import IconFAQ from '../components/icons/IconFAQ.vue'
 
-const items: Array<any> = [{ title: 'Table Light 01' }, { title: 'Table Light 02' }, { title: 'Table Light 03' }, { title: 'Table Light 04' }, { title: 'Table Light 05' }, { title: 'Table Light 06' }]
 </script>
-
 <template>
-  <main>
-
-    <ul class="switch-wrapper">
-
-      <li v-for="({ title }, index) in items" :key="index">
-        <div class="header">
-          <h2>{{ title }}</h2>
-          <IconMenu></IconMenu>
-        </div>
-        <SwitchItem :id="index.toString()"></SwitchItem>
-      </li>
-    </ul>
-  </main>
+  <div class="ellipseBottom"></div>
+  <div class="ellipseTop"></div>
+  <div class="faq">
+    <IconFAQ></IconFAQ>
+  </div>
+  <div class="layout">
+    <header>
+      <HeaderComponent :title="'Garden Light'"> </HeaderComponent>
+    </header>
+    <main>
+      <SwitchTable></SwitchTable>
+    </main>
+    <footer>
+      <FooterComponent></FooterComponent>
+    </footer>
+  </div>
 </template>
 
 <style scoped lang="scss">
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+.ellipseBottom {
+  position: absolute;
+  height: 50%;
+  width: 40%;
+  bottom: 0;
+  left: 0;
 
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('@/assets/ellipseBottom.png');
+  ;
+}
+
+.ellipseTop {
+  position: absolute;
+  width: 350px;
+  height: 55%;
+  top: 0;
+  right: 0;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('@/assets/ellipseTop.png');
+  ;
+}
+
+.faq {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  height: 40px;
+  width: 40px;
+}
+
+.layout {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  align-content: flex-start;
-  gap: 30px;
-  flex-wrap: wrap;
+  flex: auto;
+  flex-direction: column;
+  height: 100%;
+  margin: 0 50px;
+  max-height: 100vh;
+  max-width: 1620px;
 
-  li {
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
-
-      h2 {
-        color: #FFF;
-        font-family: Inter;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-      }
-    }
-
-    border-radius: 4px;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    padding: 20px;
+  header {
+    line-height: 48px;
+    margin-top: 50px;
+    margin-bottom: 50px;
   }
 
+  main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 120px;
+    line-height: 120px;
+    overflow: auto;
+  }
+
+  footer {
+    text-align: center;
+    color: #fff;
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
 }
 </style>
