@@ -1,21 +1,49 @@
 <script setup lang="ts">
-import SwitchItem from '../components/SwitchItem.vue'
-import IconMenu from '../components/icons/IconMenu.vue'
+import { ref } from 'vue'
+import SwitchItem from '../components/SwitchItem/SwitchItem.vue'
+import GearIcon from '../components/icons/GearIcon.vue'
+import BucketIcon from '../components/icons/BucketIcon.vue'
+import CopyIcon from '../components/icons/CopyIcon.vue'
+import BurgerMenu from '../share/BurgerMenu.vue'
 
-const items: Array<any> = [{ title: 'Table Light 01' }, { title: 'Table Light 02' }, { title: 'Table Light 03' }, { title: 'Table Light 04' }, { title: 'Table Light 05' }, { title: 'Table Light 06' }]
+const initItems = new Array(8).fill('').map((el, ind) => ({
+  title: `Title ${ind}`
+}))
+
+const menuItems: Array<{ icon: any; title: string; type: string }> = [
+  { icon: GearIcon, title: 'Настроить', type: 'setup' },
+  { icon: CopyIcon, title: 'Дублировать', type: 'copy' },
+  { icon: BucketIcon, title: 'Удалить', type: 'delete' }
+]
+
+const items = ref(initItems)
+
+const onMenuAction = (type: string, el: { title: string }) => {
+  console.log(type)
+  switch (type) {
+    case 'copy':
+      items.value = [...items.value, el]
+      break
+
+    case 'delete':
+      items.value = items.value.filter(({ title }) => title !== el.title)
+      break
+
+    default:
+      break
+  }
+}
 </script>
 
 <template>
   <main>
-
     <ul class="switch-wrapper">
-
-      <li v-for="({ title }, index) in items" :key="index">
-        <div class="header">
-          <h2>{{ title }}</h2>
-          <IconMenu></IconMenu>
-        </div>
-        <SwitchItem :id="index.toString()"></SwitchItem>
+      <li v-for="(el, index) in items" :key="index">
+        <SwitchItem :id="index.toString()">
+          <div class="header">
+            <h2>{{ el.title }}</h2>
+            <BurgerMenu @menu-action="(e) => onMenuAction(e, el)" :items="menuItems" /></div
+        ></SwitchItem>
       </li>
     </ul>
   </main>
@@ -42,7 +70,7 @@ ul {
       margin-bottom: 15px;
 
       h2 {
-        color: #FFF;
+        color: #fff;
         font-family: Inter;
         font-size: 18px;
         font-style: normal;
@@ -55,6 +83,5 @@ ul {
     border: 2px solid rgba(255, 255, 255, 0.2);
     padding: 20px;
   }
-
 }
 </style>
