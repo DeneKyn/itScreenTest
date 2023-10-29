@@ -34,8 +34,6 @@ const onMenuAction = (type: string, el: { title: string }) => {
   }
 }
 </script>
-
-<template>
   <main>
     <ul class="switch-wrapper">
       <li v-for="(el, index) in items" :key="index">
@@ -50,11 +48,41 @@ const onMenuAction = (type: string, el: { title: string }) => {
 </template>
 
 <style scoped lang="scss">
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+.ellipseBottom {
+  position: absolute;
+  height: 50%;
+  width: 40%;
+  bottom: 0;
+  left: 0;
 
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('@/assets/ellipseBottom.png');
+  ;
+}
+
+.ellipseTop {
+  position: absolute;
+  width: 350px;
+  height: 55%;
+  top: 0;
+  right: 0;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('@/assets/ellipseTop.png');
+  ;
+}
+
+.faq {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  height: 40px;
+  width: 40px;
+}
+
+.layout {
   display: flex;
   justify-content: center;
   align-items: flex-start;
