@@ -66,62 +66,6 @@
     border: solid $border transparent;
     border-radius: 4px;
 
-    input {
-        display: none;
-
-        &:checked~label {
-            .cnt1 {
-                .cnt2 {
-                    background: #4E2F13;
-
-                    .cnt3-border-wrap {
-                        transform: translate(-50%, 0%);
-
-                        .indicator-off {
-                            .switch-indicator {
-                                background: #171717;
-                            }
-                        }
-
-                        .indicator-on {
-                            .switch-indicator {
-                                background: #24FF54;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        &:not(:checked)~label {
-            .cnt1 {
-                .cnt2 {
-                    background: #FFF1E4;
-
-                    .cnt3-border-wrap {
-                        transform: translate(-50%, 3%);
-
-                        .indicator-off {
-                            .switch-indicator {
-                                background: #FF3306;
-                            }
-                        }
-
-                        .indicator-on {
-                            .switch-indicator {
-                                background: #171717;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    label {
-        cursor: pointer;
-    }
-
     .cnt1-border-wrap {
         position: absolute;
         width: 236px;
@@ -155,21 +99,40 @@
                 .cnt3-border-wrap {
                     position: absolute;
                     width: 224px;
-                    height: 218px;
+                    height: 224px;
 
                     left: 50%;
                     top: 0;
-                    transform: translate(-50%, 3%);
+                    transform: translate(-50%, 0%);
 
-                    padding: 2px;
-                    border-radius: 6px;
-                    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(164, 143, 122, 0.5) 45.31%, rgba(255, 255, 255, 0.5) 100%), conic-gradient(from 225.46deg at 100.22% 1.61%, #FFFFFF 0deg, #502905 360deg);
+                    padding: 1px;
+                    border-radius: 4px;
+                    background: linear-gradient(135deg, #A48F7A 0%, #FFFFFF 100%);
 
                     .cnt3 {
-                        border-radius: 6px;
-                        background: linear-gradient(135deg, #E9DDD2 0%, #917C68 91.55%);
+                        &.on {
+                            background: #00FF38;
+                        }
+
+                        &.off {
+                            background: #FF0707;
+                        }
+
+                        border-radius: 4px;
                         width: 100%;
                         height: 100%;
+
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        color: #151A30;
+                        text-align: center;
+                        font-family: Inter;
+                        font-size: 14px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: normal;
                     }
                 }
             }

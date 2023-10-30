@@ -1,9 +1,8 @@
 <script setup lang="ts">
     import { defineProps } from 'vue';
-    import './SwitchItem.scss';
 
-    defineProps(['id']);
-    defineEmits(['copy']);
+    defineProps(['id', 'isActive']);
+    defineEmits(['toggle'])
 </script>
 
 <template>
@@ -41,3 +40,7 @@
         </label>
     </div>
 </template>
+
+<style lang="scss" scoped>
+@import url('./SwitchItem.scss');
+</style>
