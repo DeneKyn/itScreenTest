@@ -52,7 +52,6 @@ export default defineComponent({
   width: 40%;
   bottom: 0;
   left: 0;
-  z-index: -1;
 
   background-repeat: no-repeat;
   background-size: cover;
@@ -65,7 +64,6 @@ export default defineComponent({
   height: 55%;
   top: 0;
   right: 0;
-  z-index: -1;
 
   background-repeat: no-repeat;
   background-size: cover;
@@ -94,6 +92,7 @@ export default defineComponent({
     line-height: 48px;
     margin-top: 50px;
     margin-bottom: 50px;
+    z-index: 1;
   }
 
   main {
@@ -102,6 +101,7 @@ export default defineComponent({
     flex: 1;
     min-height: 120px;
     overflow: auto;
+    z-index: 1;
   }
 
   footer {
@@ -109,6 +109,7 @@ export default defineComponent({
     color: #fff;
     margin-top: 5px;
     margin-bottom: 20px;
+    z-index: 1;
   }
 }
 </style>

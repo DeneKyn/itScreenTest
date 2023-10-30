@@ -4,6 +4,7 @@
 #app {
   background-image: url('~@/assets/background.svg');
   font-weight: normal;
+  background: #0C0B0A;
 }
 
 @media (hover: hover) {
