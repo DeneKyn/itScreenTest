@@ -21,7 +21,7 @@ const onMenuItemClick = (type: string) => {
   <div class="container">
     <IconMenu @click="onClick"></IconMenu>
     <div @mouseleave="closeMenu" v-if="isActive" class="menu_list">
-      <div @click="() => onMenuItemClick(item.type)" class="menu_item" v-for="item in items">
+      <div v-for="(item, index) in items" :key="index" @click="() => onMenuItemClick(item.type)" class="menu_item">
         <component :is="item.icon"></component>
         <div>{{ item?.title }}</div>
       </div>
