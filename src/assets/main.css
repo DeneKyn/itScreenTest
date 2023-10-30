@@ -28,12 +28,12 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #EEE;
+  background: #eee;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #FFDD5C;
+  background: #ffdd5c;
 }
 
 /* Handle on hover */

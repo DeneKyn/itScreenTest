@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from 'vue'
 import SwitchTable from '../components/SwitchTable/SwitchTable.vue'
 import HeaderComponent from '../components/Header/HeaderComponent.vue'
 import FooterComponent from '../components/Footer/FooterComponent.vue'
@@ -17,11 +17,10 @@ export default defineComponent({
       title: 'Garden Light'
     }
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     handleFAQ() {
-      alert("TODO: Add Action");
+      alert('TODO: Add Action')
     }
   }
 })
@@ -58,7 +57,6 @@ export default defineComponent({
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url('@/assets/ellipseBottom.png');
-  ;
 }
 
 .ellipseTop {
@@ -72,7 +70,6 @@ export default defineComponent({
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url('@/assets/ellipseTop.png');
-  ;
 }
 
 .faq {

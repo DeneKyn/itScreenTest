@@ -1,155 +1,158 @@
 *,
 *:before,
 *:after {
-    transition: .2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 .switch-indicator-block {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0%);
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0%);
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    &.indicator-on {
-        top: 10px;
+  &.indicator-on {
+    top: 10px;
 
-        .switch-indicator {
-            background: #171717;
-        }
+    .switch-indicator {
+      background: #171717;
     }
+  }
 
-    &.indicator-off {
-        bottom: 10px;
+  &.indicator-off {
+    bottom: 10px;
 
-        .switch-indicator {
-            background: #171717;
-        }
+    .switch-indicator {
+      background: #171717;
     }
+  }
 
-    .switch-indicator-wrap {
-        width: 18px;
-        height: 29px;
-        border-radius: 30px;
-        padding: 2px;
-        background: linear-gradient(340.92deg, rgba(255, 255, 255, 0.8) -2.41%, rgba(164, 143, 122, 0.8) 100%);
+  .switch-indicator-wrap {
+    width: 18px;
+    height: 29px;
+    border-radius: 30px;
+    padding: 2px;
+    background: linear-gradient(
+      340.92deg,
+      rgba(255, 255, 255, 0.8) -2.41%,
+      rgba(164, 143, 122, 0.8) 100%
+    );
 
-        .switch-indicator {
-            border-radius: 30px;
+    .switch-indicator {
+      border-radius: 30px;
 
-            height: 100%;
-            width: 100%;
-        }
+      height: 100%;
+      width: 100%;
     }
+  }
 
-    .switch-indicator-label {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 17px;
-        color: #151A30;
-    }
+  .switch-indicator-label {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #151a30;
+  }
 }
 
 .switch-element {
-    position: relative;
-    height: 330px;
-    width: 330px;
-    background: linear-gradient(135deg, #E9DDD2 0%, #917C68 100%);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    $border: 4px;
+  position: relative;
+  height: 330px;
+  width: 330px;
+  background: linear-gradient(135deg, #e9ddd2 0%, #917c68 100%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  $border: 4px;
 
-    background-clip: padding-box;
-    border: solid $border transparent;
+  background-clip: padding-box;
+  border: solid $border transparent;
+  border-radius: 4px;
+
+  .cnt1-border-wrap {
+    position: absolute;
+    width: 236px;
+    height: 236px;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2px;
     border-radius: 4px;
+    background: linear-gradient(135deg, #a48f7a 0%, #ffffff 100%);
 
-    .cnt1-border-wrap {
+    .cnt1 {
+      border-radius: 4px;
+      background: #0a0501;
+      width: 100%;
+      height: 100%;
+
+      .cnt2 {
         position: absolute;
-        width: 236px;
-        height: 236px;
+
+        height: 224px;
+        width: 224px;
+        background: #fff1e4;
 
         left: 50%;
         top: 50%;
+        border-radius: 6px;
         transform: translate(-50%, -50%);
-        padding: 2px;
-        border-radius: 4px;
-        background: linear-gradient(135deg, #A48F7A 0%, #FFFFFF 100%);
 
-        .cnt1 {
+        .cnt3-border-wrap {
+          position: absolute;
+          width: 224px;
+          height: 224px;
+
+          left: 50%;
+          top: 0;
+          transform: translate(-50%, 0%);
+
+          padding: 1px;
+          border-radius: 4px;
+          background: linear-gradient(135deg, #a48f7a 0%, #ffffff 100%);
+
+          .cnt3 {
+            &.on {
+              background: #00ff38;
+            }
+
+            &.off {
+              background: #ff0707;
+            }
+
             border-radius: 4px;
-            background: #0A0501;
             width: 100%;
             height: 100%;
 
-            .cnt2 {
-                position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-                height: 224px;
-                width: 224px;
-                background: #FFF1E4;
-
-                left: 50%;
-                top: 50%;
-                border-radius: 6px;
-                transform: translate(-50%, -50%);
-
-                .cnt3-border-wrap {
-                    position: absolute;
-                    width: 224px;
-                    height: 224px;
-
-                    left: 50%;
-                    top: 0;
-                    transform: translate(-50%, 0%);
-
-                    padding: 1px;
-                    border-radius: 4px;
-                    background: linear-gradient(135deg, #A48F7A 0%, #FFFFFF 100%);
-
-                    .cnt3 {
-                        &.on {
-                            background: #00FF38;
-                        }
-
-                        &.off {
-                            background: #FF0707;
-                        }
-
-                        border-radius: 4px;
-                        width: 100%;
-                        height: 100%;
-
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-
-                        color: #151A30;
-                        text-align: center;
-                        font-family: Inter;
-                        font-size: 14px;
-                        font-style: normal;
-                        font-weight: 700;
-                        line-height: normal;
-                    }
-                }
-            }
-
+            color: #151a30;
+            text-align: center;
+            font-family: Inter;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+          }
         }
+      }
     }
+  }
 
-    &:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-        margin: -$border;
-        border-radius: inherit;
-        background: conic-gradient(from 225deg at 100.15% 0%, #FFFFFF 0deg, #502905 360deg);
-    }
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -$border;
+    border-radius: inherit;
+    background: conic-gradient(from 225deg at 100.15% 0%, #ffffff 0deg, #502905 360deg);
+  }
 }

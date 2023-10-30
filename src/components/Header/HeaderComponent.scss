@@ -1,24 +1,24 @@
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .icon {
+    cursor: pointer;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
+  }
 
-    .icon {
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .title {
-        display: flex;
-        gap: 8px;
-        text-transform: uppercase;
-        color: #FFF;
-        font-family: Inter;
-        font-size: 40px;
-        font-style: normal;
-        font-weight: 600;
-        height: 48px;
-    }
+  .title {
+    display: flex;
+    gap: 8px;
+    text-transform: uppercase;
+    color: #fff;
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    height: 48px;
+  }
 }
