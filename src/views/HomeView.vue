@@ -36,7 +36,7 @@ export default defineComponent({
     <header>
       <HeaderComponent :title="title"> </HeaderComponent>
     </header>
-    <main>
+    <main id="main">
       <SwitchTable></SwitchTable>
     </main>
     <footer>
@@ -96,6 +96,7 @@ export default defineComponent({
   }
 
   main {
+    position: relative;
     display: flex;
     flex-direction: column;
     flex: 1;

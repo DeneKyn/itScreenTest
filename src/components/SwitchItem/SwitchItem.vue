@@ -1,8 +1,18 @@
-<script setup lang="ts">
-import { defineProps } from 'vue'
+<script lang="ts">
+import { defineComponent } from 'vue'
 
-defineProps(['id', 'isActive'])
-defineEmits(['toggle'])
+export default defineComponent({
+  emits: ['toggle',],
+  props: {
+    id: { type: String, required: true },
+    isActive: { type: Boolean, required: true }
+  },
+  methods: {
+    handleClose() {
+      alert('TODO: Add Action')
+    }
+  }
+})
 </script>
 
 <template>
@@ -30,6 +40,7 @@ defineEmits(['toggle'])
             </div>
           </div>
         </div>
+        <div class="cnt2-shadow"></div>
       </div>
     </label>
   </div>

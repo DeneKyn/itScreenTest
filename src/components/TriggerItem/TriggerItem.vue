@@ -1,12 +1,18 @@
-<script setup lang="ts">
-import { defineProps } from 'vue'
+<script lang="ts">
+import { defineComponent } from 'vue'
 
-defineProps(['id', 'isActive'])
-const emit = defineEmits(['toggle'])
-
-const onSwitchToggle = (id: string) => {
-  emit('toggle', id)
-}
+export default defineComponent({
+  emits: ['toggle'],
+  props: {
+    id: { type: String, required: true },
+    isActive: { type: Boolean, required: true }
+  },
+  methods: {
+    onSwitchToggle() {
+      this.$emit('toggle', this.id)
+    }
+  }
+})
 </script>
 
 <template>
@@ -15,12 +21,13 @@ const onSwitchToggle = (id: string) => {
     <div :for="'light-switch_' + id" class="cnt1-border-wrap">
       <div class="cnt1">
         <div class="cnt2">
-          <div class="cnt3-border-wrap" @click="() => onSwitchToggle(id)">
+          <div class="cnt3-border-wrap" @click="() => onSwitchToggle()">
             <div class="cnt3" :class="isActive ? 'on' : 'off'">
-              {{ isActive ? 'Стоп' : 'Старт' }}
+              {{ isActive ? 'СТАРТ' : 'СТОП' }}
             </div>
           </div>
         </div>
+        <div class="cnt2-shadow"></div>
       </div>
     </div>
   </div>

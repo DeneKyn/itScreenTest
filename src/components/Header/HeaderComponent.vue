@@ -1,14 +1,23 @@
-<script setup lang="ts">
-import { defineProps } from 'vue'
+<script lang="ts">
+import { defineComponent } from 'vue'
 import IconLogo from '../icons/IconLogo.vue'
 import IconClose from '../icons/IconClose.vue'
-import './HeaderComponent.scss'
 
-defineProps(['title'])
+export default defineComponent({
+  components: {
+    IconLogo,
+    IconClose,
+  },
+  props: {
+    title: { type: String, required: true }
+  },
+  methods: {
+    handleClose() {
+      alert('TODO: Add Action')
+    }
+  }
+})
 
-const handleClose = () => {
-  alert('TODO: Add Action')
-}
 </script>
 
 <template>
@@ -24,3 +33,7 @@ const handleClose = () => {
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+@import url('./HeaderComponent.scss');
+</style>
