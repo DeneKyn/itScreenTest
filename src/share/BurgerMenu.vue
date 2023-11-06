@@ -1,9 +1,9 @@
 <script lang="ts">
-import { defineComponent, DefineComponent, ref } from 'vue'
+import { defineComponent, ref } from 'vue'
 import IconMenu from '../components/icons/IconMenu.vue'
 
 interface IItems {
-  icon: DefineComponent,
+  icon: any,
   title: string,
   type: string,
 }
