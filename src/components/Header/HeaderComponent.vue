@@ -12,14 +12,14 @@ const handleClose = () => {
 </script>
 
 <template>
-  <div class="header">
-    <div class="title">
-      <div class="icon">
+  <div class="b-header">
+    <div class="b-header__title">
+      <div class="title__icon">
         <IconLogo></IconLogo>
       </div>
       <span>{{ title }}</span>
     </div>
-    <div class="icon" @click="handleClose()">
+    <div class="b-header__close-icon" @click="handleClose()">
       <IconClose></IconClose>
     </div>
   </div>

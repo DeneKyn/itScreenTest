@@ -1,0 +1,22 @@
+.b-view-home {
+  padding: 3% 140px;
+  height: 100%;
+  position: relative;
+  @media only screen and (max-width: 1280px) {
+    padding: 3% 20px;
+  }
+  .b-view-home__background-image {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+  }
+}

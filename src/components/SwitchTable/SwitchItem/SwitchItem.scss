@@ -1,0 +1,27 @@
+.b-switch-item {
+  display: flex;
+  flex-direction: column;
+  .b-switch-item__body {
+    background: linear-gradient(135deg, #e9ddd2 0%, #917c68 100%);
+    border-radius: 4px;
+    border-right: 4px solid #502905;
+    border-bottom: 4px solid #502905;
+    border-top: 4px solid #ffffff;
+    border-left: 4px solid #ffffff;
+    padding: 53px;
+    .b-body__input {
+      visibility: hidden;
+      height: 0;
+      position: absolute;
+    }
+    .b-body__label {
+      .b-label__body {
+        border-radius: 4px;
+        border: 6px solid black;
+
+        width: 224px;
+        height: 224px;
+      }
+    }
+  }
+}

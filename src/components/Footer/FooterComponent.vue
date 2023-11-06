@@ -3,5 +3,5 @@ import './FooterComponent.scss'
 </script>
 
 <template>
-  <div class="footer">Dashboard It-screen. V 1.0.1</div>
+  <div class="b-footer">Dashboard It-screen. V 1.0.1</div>
 </template>

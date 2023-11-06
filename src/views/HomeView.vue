@@ -1,120 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import SwitchItem from '../components/SwitchItem/SwitchItem.vue'
-import GearIcon from '../components/icons/GearIcon.vue'
-import BucketIcon from '../components/icons/BucketIcon.vue'
-import CopyIcon from '../components/icons/CopyIcon.vue'
-import BurgerMenu from '../share/BurgerMenu.vue'
-
-const initItems = new Array(8).fill('').map((el, ind) => ({
-  title: `Title ${ind}`
-}))
-
-const menuItems: Array<{ icon: any; title: string; type: string }> = [
-  { icon: GearIcon, title: 'Настроить', type: 'setup' },
-  { icon: CopyIcon, title: 'Дублировать', type: 'copy' },
-  { icon: BucketIcon, title: 'Удалить', type: 'delete' }
-]
-
-const items = ref(initItems)
-
-const onMenuAction = (type: string, el: { title: string }) => {
-  console.log(type)
-  switch (type) {
-    case 'copy':
-      items.value = [...items.value, el]
-      break
-
-    case 'delete':
-      items.value = items.value.filter(({ title }) => title !== el.title)
-      break
-
-    default:
-      break
-  }
-}
+import SwitchTable from '@/components/SwitchTable/SwitchTable.vue'
+import HeaderComponent from '@/components/Header/HeaderComponent.vue'
+import backgroundImg from '../assets/background.svg'
+import './HomeView.scss'
 </script>
-<<<<<<< HEAD
-
-=======
->>>>>>> 180d6c9 (fix)
 <template>
-  <main>
-    <ul class="switch-wrapper">
-      <li v-for="(el, index) in items" :key="index">
-        <SwitchItem :id="index.toString()">
-          <div class="header">
-            <h2>{{ el.title }}</h2>
-            <BurgerMenu @menu-action="(e) => onMenuAction(e, el)" :items="menuItems" /></div
-        ></SwitchItem>
-      </li>
-    </ul>
+  <main class="b-view b-view-home">
+    <HeaderComponent title="GARDEN LIGHT" />
+    <SwitchTable />
+    <div class="b-view-home__background-image">
+      <img :src="backgroundImg" alt="background" />
+    </div>
   </main>
 </template>
-
-<style scoped lang="scss">
-.ellipseBottom {
-  position: absolute;
-  height: 50%;
-  width: 40%;
-  bottom: 0;
-  left: 0;
-
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url('@/assets/ellipseBottom.png');
-}
-
-.ellipseTop {
-  position: absolute;
-  width: 350px;
-  height: 55%;
-  top: 0;
-  right: 0;
-
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url('@/assets/ellipseTop.png');
-}
-
-.faq {
-  cursor: pointer;
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  height: 40px;
-  width: 40px;
-}
-
-.layout {
-  display: flex;
-  flex: auto;
-  flex-direction: column;
-  height: 100%;
-  margin: 0 50px;
-  max-height: 100vh;
-  max-width: 1620px;
-
-  li {
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
-
-      h2 {
-        color: #fff;
-        font-family: Inter;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-      }
-    }
-
-    border-radius: 4px;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    padding: 20px;
-  }
-}
-</style>

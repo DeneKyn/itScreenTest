@@ -1,17 +1,24 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue'
 import './SwitchTable.scss'
-import SwitchItem from '../SwitchItem/SwitchItem.vue'
-import TriggerItem from '../TriggerItem/TriggerItem.vue'
+import SwitchItem from './SwitchItem/SwitchItem.vue'
+import SwitchElement from './components/SwitchElement/SwitchElement.vue'
+import TriggerElement from './components/TriggerElement/TriggerElement.vue'
 import IconGear from '../icons/IconGear.vue'
 import IconBucket from '../icons/IconBucket.vue'
 import IconCopy from '../icons/IconCopy.vue'
 import BurgerMenu from '../../share/BurgerMenu.vue'
 
+const getType = (types: Array<string>) => {
+  const index = Math.floor(Math.random() * types.length)
+  return types[index]
+}
+
 const initItems = new Array(8).fill('').map((el, index) => ({
   title: `Table Light ${index}`,
-  component: index >= 2 ? SwitchItem : TriggerItem,
-  isActive: false
+  component: SwitchItem,
+  isActive: false,
+  type: getType(['switch', 'trigger'])
 }))
 
 const menuItems: Array<{ icon: any; title: string; type: string }> = [
@@ -24,7 +31,7 @@ const items = shallowRef(initItems)
 
 const onMenuAction = (
   type: string,
-  el: { title: string; component: typeof SwitchItem | typeof TriggerItem; isActive: boolean }
+  el: { title: string; component: typeof SwitchItem; isActive: boolean; type: string }
 ) => {
   switch (type) {
     case 'copy':
@@ -37,29 +44,22 @@ const onMenuAction = (
       break
   }
 }
-const onToggleSwitch = (id: string) => {
-  items.value[+id] = {
-    title: items.value[+id].title,
-    component: items.value[+id].component,
-    isActive: !items.value[+id].isActive
-  }
-  items.value = [...items.value]
-}
 </script>
 
 <template>
-  <ul class="switch-wrapper">
+  <ul class="b-switch-table">
     <li v-for="(el, index) in items" :key="index">
-      <component
-        :is="el.component"
-        :id="index.toString()"
-        :isActive="el.isActive"
-        @toggle="(e: string) => onToggleSwitch(e)"
-      >
-        <div class="header">
-          <h2>{{ el.title }}</h2>
-          <BurgerMenu @menu-action="(e) => onMenuAction(e, el)" :items="menuItems" />
-        </div>
+      <component :is="el.component" :id="index.toString()" :isActive="el.isActive">
+        <template v-slot:header>
+          <div class="b-switch-table__header">
+            <h2>{{ el.title }}</h2>
+            <BurgerMenu @menu-action="(e) => onMenuAction(e, el)" :items="menuItems" />
+          </div>
+        </template>
+        <template v-slot:body="{ isActive }">
+          <template v-if="el.type === 'trigger'"><TriggerElement :isActive="isActive" /></template>
+          <template v-if="el.type === 'switch'"><SwitchElement :isActive="isActive" /></template>
+        </template>
       </component>
     </li>
   </ul>

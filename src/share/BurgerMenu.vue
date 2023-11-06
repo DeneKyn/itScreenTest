@@ -23,12 +23,12 @@ const onMenuItemClick = (type: string) => {
 </script>
 
 <template>
-  <div class="container">
-    <IconMenu @click="onClick"></IconMenu>
-    <div @mouseleave="closeMenu" v-if="isActive" class="menu_list">
-      <div @click="() => onMenuItemClick(item.type)" class="menu_item" v-for="item in items">
+  <div @click="onClick" class="b-burger-menu">
+    <IconMenu></IconMenu>
+    <div @mouseleave="closeMenu" v-if="isActive" class="b-burger-menu__list">
+      <div @click="() => onMenuItemClick(item.type)" class="list__item" v-for="item in items">
         <component :is="item.icon"></component>
-        <div>{{ item?.title }}</div>
+        <div class="item__title">{{ item?.title }}</div>
       </div>
     </div>
   </div>

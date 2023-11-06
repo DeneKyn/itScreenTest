@@ -4,7 +4,8 @@
 #app {
   background-image: url('~@/assets/background.svg');
   font-weight: normal;
-  background: #0C0B0A;
+  background: #0c0b0a;
+  width: 100%;
 }
 
 @media (hover: hover) {
@@ -13,14 +14,9 @@
   }
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    justify-content: center;
-  }
-
-  #app {
-  }
+body {
+  display: flex;
+  justify-content: center;
 }
 
 ::-webkit-scrollbar {

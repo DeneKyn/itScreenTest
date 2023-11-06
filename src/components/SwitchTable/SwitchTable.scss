@@ -1,18 +1,15 @@
-.switch-wrapper {
+.b-switch-table {
   list-style-type: none;
-  margin: 20px;
-  padding: 0;
-  overflow: auto;
-  display: flex;
-  flex: 1;
+  margin-top: 40px;
   justify-content: center;
-  align-items: flex-start;
-  align-content: flex-start;
+  display: flex;
+  padding: 0 0px;
+  flex: 1;
   gap: 30px;
   flex-wrap: wrap;
 
   li {
-    .header {
+    .b-switch-table__header {
       display: flex;
       justify-content: space-between;
       align-items: center;

@@ -1,24 +1,29 @@
-.header {
+.b-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  .icon {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .title {
+  .b-header__title {
     display: flex;
     gap: 8px;
-    text-transform: uppercase;
     color: #fff;
     font-family: Inter;
     font-size: 40px;
     font-style: normal;
     font-weight: 600;
-    height: 48px;
+    line-height: normal;
+    .title__icon {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .b-header__close-icon {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
