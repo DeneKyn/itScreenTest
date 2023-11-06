@@ -27,26 +27,24 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="ellipseBottom"></div>
-  <div class="ellipseTop"></div>
   <div class="faq" @click="handleFAQ()">
     <IconFAQ></IconFAQ>
   </div>
-  <div class="layout">
-    <header>
+  <div class="main-page">
+    <header class="main-page__header">
       <HeaderComponent :title="title"> </HeaderComponent>
     </header>
-    <main id="main">
+    <main class="main-page__content">
       <SwitchTable></SwitchTable>
     </main>
-    <footer>
+    <footer class="main-page__footer">
       <FooterComponent></FooterComponent>
     </footer>
   </div>
 </template>
 
-<style scoped lang="scss">
-.ellipseBottom {
+<style lang="scss">
+.bg-ellipse-bottom {
   position: absolute;
   height: 50%;
   width: 40%;
@@ -58,7 +56,7 @@ export default defineComponent({
   background-image: url('@/assets/ellipseBottom.png');
 }
 
-.ellipseTop {
+.bg-ellipse-top {
   position: absolute;
   width: 350px;
   height: 55%;
@@ -79,23 +77,21 @@ export default defineComponent({
   width: 40px;
 }
 
-.layout {
+.main-page {
   display: flex;
   flex: auto;
   flex-direction: column;
   height: 100%;
-  margin: 0 50px;
+  padding: 0 50px;
+  margin: auto;
   max-height: 100vh;
   max-width: 1620px;
 
-  header {
-    line-height: 48px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+  &__header {
     z-index: 1;
   }
 
-  main {
+  &__content {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -105,11 +101,7 @@ export default defineComponent({
     z-index: 1;
   }
 
-  footer {
-    text-align: center;
-    color: #fff;
-    margin-top: 5px;
-    margin-bottom: 20px;
+  &__footer {
     z-index: 1;
   }
 }

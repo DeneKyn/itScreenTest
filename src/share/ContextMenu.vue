@@ -32,7 +32,7 @@ export default defineComponent({
   },
   mounted() {
     this.isMounted = true;
-    document.querySelector("#main")?.addEventListener('scroll', () => {
+    document.querySelector(".main-page__content")?.addEventListener('scroll', () => {
       this.closeMenu();
     });
   },
@@ -63,21 +63,25 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="icon" @click="onClick">
+  <div class="context-menu-icon" @click="onClick">
     <IconMenu></IconMenu>
   </div>
   <Teleport to="#app" v-if="isMounted && isActive">
-    <div ref="menuList" @mouseleave="closeMenu" v-if="isActive" class="menu_list"
-      v-bind:style="{ 'top': top, 'left': left }">
-      <div class="menu_item" v-for="(item, index) in items" :key="index" @click="() => onMenuItemClick(item.type)">
-        <component :is="item.icon"></component>
-        <div>{{ item?.title }}</div>
+    <section class="context-menu" v-bind:style="{ 'top': top, 'left': left }">
+      <div class="context-menu__wrapper">
+        <div class="context-menu__items" @mouseleave="closeMenu" v-if="isActive">
+          <div class="context-menu-item" v-for="(item, index) in items" :key="index"
+            @click="() => onMenuItemClick(item.type)">
+            <component class="context-menu-item__icon" :is="item.icon"></component>
+            <div class="context-menu-item__title">{{ item?.title }}</div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   </Teleport>
 </template>
 
 
 <style lang="scss" scoped>
-@import url('./BurgerMenu.scss');
+@import url('./ContextMenu.scss');
 </style>

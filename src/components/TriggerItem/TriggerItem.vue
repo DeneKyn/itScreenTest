@@ -18,16 +18,17 @@ export default defineComponent({
 <template>
   <slot />
   <div class="switch-element">
-    <div :for="'light-switch_' + id" class="cnt1-border-wrap">
-      <div class="cnt1">
-        <div class="cnt2">
-          <div class="cnt3-border-wrap" @click="() => onSwitchToggle()">
-            <div class="cnt3" :class="isActive ? 'on' : 'off'">
-              {{ isActive ? 'СТАРТ' : 'СТОП' }}
+    <div class="switch-element__black-square-border">
+      <div class="switch-element__black-square">
+        <div class="switch-element__light-square">
+          <div class="switch-element__button-border" @click="() => onSwitchToggle()">
+            <div class="switch-element__button"
+              :class="isActive ? 'switch-element__button_color-green' : 'switch-element__button_color-red'">
+              <span class="switch-element__text">{{ isActive ? 'СТАРТ' : 'СТОП' }}</span>
             </div>
           </div>
         </div>
-        <div class="cnt2-shadow"></div>
+        <div class="switch-element__button-shadow"></div>
       </div>
     </div>
   </div>

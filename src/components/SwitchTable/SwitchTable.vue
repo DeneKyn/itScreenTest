@@ -5,7 +5,7 @@ import TriggerItem from '../TriggerItem/TriggerItem.vue'
 import IconGear from '../icons/IconGear.vue'
 import IconBucket from '../icons/IconBucket.vue'
 import IconCopy from '../icons/IconCopy.vue'
-import BurgerMenu from '../../share/BurgerMenu.vue'
+import ContextMenu from '../../share/ContextMenu.vue'
 
 export default defineComponent({
   components: {
@@ -14,7 +14,7 @@ export default defineComponent({
     IconGear,
     IconBucket,
     IconCopy,
-    BurgerMenu
+    ContextMenu
   },
   setup() {
     const initItems = new Array(8).fill('').map((el, index) => ({
@@ -59,17 +59,21 @@ export default defineComponent({
 </script>
 
 <template>
-  <ul class="switch-wrapper">
-    <li v-for="(el, index) in items" :key="index">
-      <component :is="el.component" :id="index.toString()" :isActive="el.isActive"
-        @toggle="(e: string) => onToggleSwitch(e)">
-        <div class="header">
-          <h2>{{ el.title }}</h2>
-          <BurgerMenu @menu-action="(e) => onMenuAction(e, index)" :items="menuItems" />
-        </div>
-      </component>
-    </li>
-  </ul>
+  <section class="table">
+    <div class="table__wrapper">
+      <ul class="table__items">
+        <li class="table-item" v-for="(el, index) in items" :key="index">
+          <component :is="el.component" :id="index.toString()" :isActive="el.isActive"
+            @toggle="(e: string) => onToggleSwitch(e)">
+            <div class="table-item__header">
+              <h2 class="table-item__title">{{ el.title }}</h2>
+              <ContextMenu @menu-action="(e) => onMenuAction(e, index)" :items="menuItems" />
+            </div>
+          </component>
+        </li>
+      </ul>
+    </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>

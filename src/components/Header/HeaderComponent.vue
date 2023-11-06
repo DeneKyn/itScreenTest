@@ -21,17 +21,19 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="header">
-    <div class="title">
-      <div class="icon">
-        <IconLogo></IconLogo>
+  <section class="header">
+    <div class="header__wrapper">
+      <div class="header__logo">
+        <div class="header__icon">
+          <IconLogo></IconLogo>
+        </div>
+        <span class="header__title">{{ title }}</span>
       </div>
-      <span>{{ title }}</span>
+      <div class="header__icon" @click="handleClose()">
+        <IconClose></IconClose>
+      </div>
     </div>
-    <div class="icon" @click="handleClose()">
-      <IconClose></IconClose>
-    </div>
-  </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>

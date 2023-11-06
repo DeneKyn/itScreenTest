@@ -6,7 +6,11 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="footer">Dashboard It-screen. V 1.0.1</div>
+  <section class="footer">
+    <div class="footer__wrapper">
+      <div class="footer__text">Dashboard It-screen. V 1.0.1</div>
+    </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>

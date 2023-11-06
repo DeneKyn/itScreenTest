@@ -1,13 +1,19 @@
 .footer {
-  color: #7a6a2a;
-
   display: flex;
   justify-content: center;
   align-items: center;
 
-  font-family: Inter;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
+  &__wrapper {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  &__text {
+    color: #7a6a2a;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
 }

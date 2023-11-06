@@ -7,9 +7,14 @@ export default defineComponent({
     id: { type: String, required: true },
     isActive: { type: Boolean, required: true }
   },
+  data() {
+    return {
+      isChecked: this.isActive,
+    }
+  },
   methods: {
-    handleClose() {
-      alert('TODO: Add Action')
+    onSwitchToggle() {
+      this.$emit('toggle', this.id)
     }
   }
 })
@@ -18,29 +23,37 @@ export default defineComponent({
 <template>
   <slot />
   <div class="switch-element">
-    <input type="checkbox" :id="'light-switch_' + id" />
-    <label :for="'light-switch_' + id" class="cnt1-border-wrap">
-      <div class="cnt1">
-        <div class="cnt2">
-          <div class="cnt3-border-wrap">
-            <div class="cnt3">
-              <div class="switch-indicator-block indicator-on">
-                <div class="switch-indicator-wrap">
-                  <div class="switch-indicator"></div>
+    <label class="switch-element__label">
+      <input class="switch-element__input" type="checkbox" v-model="isChecked" />
+      <div class="switch-element__black-square">
+        <div class="switch-element__light-square" :class="[isChecked ?
+          'switch-element__light-square_color-on' :
+          'switch-element__light-square_color-off']">
+          <div class="switch-element__button-border" :class="[isChecked ?
+            'switch-element_button-border__position-top' :
+            'switch-element__button-border_position-bottom']">
+            <div class="switch-element__button">
+
+              <div class="switch-indicator switch-indicator_position-top">
+                <div class="switch-indicator__wrapper">
+                  <div class="switch-indicator__light switch-indicator__light_color-off"
+                    :class="{ 'switch-indicator__light_color-green': isChecked }"></div>
+                  <span class="switch-indicator__label"> ВКЛ </span>
                 </div>
-                <span class="switch-indicator-label"> ВКЛ </span>
               </div>
 
-              <div class="switch-indicator-block indicator-off">
-                <span class="switch-indicator-label"> ВЫКЛ </span>
-                <div class="switch-indicator-wrap">
-                  <div class="switch-indicator"></div>
+              <div class="switch-indicator switch-indicator_position-bottom">
+                <div class="switch-indicator__wrapper">
+                  <div class="switch-indicator__light switch-indicator__light_color-off"
+                    :class="{ 'switch-indicator__light_color-red': !isChecked }"></div>
+                  <span class="switch-indicator__label"> ВЫКЛ </span>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
-        <div class="cnt2-shadow"></div>
+        <div class="switch-element__button-shadow"></div>
       </div>
     </label>
   </div>
